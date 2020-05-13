@@ -46,6 +46,6 @@ class ArticleController extends Controller
         ];
 
         // トップページ(記事一覧)を表示
-        return view('article.index', $articles);
+        return view('articles.index', $articles);
     }
 }
