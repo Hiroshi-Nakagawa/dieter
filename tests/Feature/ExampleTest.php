@@ -12,6 +12,7 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
+    // topページの表示確認
     public function testBasicTest()
     {
         $response = $this->get('/');
