@@ -13,10 +13,16 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    // topページの表示確認
+    
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->withoutExceptionHandling();
+    }
+     // topページの表示確認
     public function testBasicTest()
     {
-        $this->withoutExceptionHandling();
+        // $this->withoutExceptionHandling();
         $response = $this->get('/');
 
         $response->assertStatus(200)
@@ -26,7 +32,7 @@ class ExampleTest extends TestCase
     // ユーザー登録画面の表示確認
     public function testRegisterView()
     {
-        $this->withoutExceptionHandling();
+        // $this->withoutExceptionHandling();
         $response = $this->get('/register');
 
         $response->assertStatus(200)
@@ -36,7 +42,7 @@ class ExampleTest extends TestCase
     // ログイン
     public function testLoginView()
     {
-        $this->withoutExceptionHandling();
+        // $this->withoutExceptionHandling();
         $response = $this
                     ->actingAs(User::find(1))
                     ->get('/');
@@ -48,7 +54,7 @@ class ExampleTest extends TestCase
     // ログアウト
     public function testLogoutView()
     {
-        $this->withoutExceptionHandling();
+        // $this->withoutExceptionHandling();
         // ログイン状態でログアウトしたら…
         $response = $this
                     ->actingAs(User::find(1))
@@ -59,5 +65,15 @@ class ExampleTest extends TestCase
 
         // ユーザーが認証されていないことを確認
         $this->assertGuest();
+    }
+
+    // 記事投稿画面
+    public function testArticlesCreateView()
+    {
+        $response = $this
+                    ->actingAs(User::find(1))
+                    ->get(route('articles.create'));
+        
+        $response->assertStatus(200);
     }
 }
