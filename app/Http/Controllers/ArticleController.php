@@ -11,7 +11,7 @@ class ArticleController extends Controller
     // 記事トップページ
     public function index()
     {
-        // ダミーデータ
+        // 記事データ
         $articles = Article::all()->sortByDesc('created_at');
 
         // トップページ(記事一覧)を表示

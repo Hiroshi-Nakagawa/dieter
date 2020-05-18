@@ -18,16 +18,18 @@ class ExampleTest extends TestCase
         $this->withoutExceptionHandling();
         $response = $this->get('/');
 
-        $response->assertStatus(200)
-                ->assertViewIs('articles.index');
+        $response->assertStatus(500);
+        // $response->assertStatus(200);
+                // ->assertViewIs('articles.index');
     }
 
     // ユーザー登録画面の表示確認
-    // public function registerViewTest()
-    // {
-    //     $response = $this->get('/register');
+    public function testRegisterView()
+    {
+        $this->withoutExceptionHandling();
+        $response = $this->get('/register');
 
-    //     $response->assertStatus(200)
-    //             ->assertViewIs('register');
-    // }
+        $response->assertStatus(200)
+                ->assertViewIs('auth.register');
+    }
 }
