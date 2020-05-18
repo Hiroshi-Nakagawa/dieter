@@ -17,4 +17,9 @@ class ArticleController extends Controller
         // トップページ(記事一覧)を表示
         return view('articles.index', ['articles' => $articles]);
     }
+
+    public function create()
+    {
+        return view('articles.create');
+    }
 }
