@@ -86,4 +86,11 @@ class ExampleTest extends TestCase
                     ->get(route('articles.edit', ['article' => Article::find(1)]))
                     ->assertStatus(200);
     }
+
+    // 記事詳細画面
+    public function testArticleShowView()
+    {
+        $response = $this->get(route('articles.show', ['article' => Article::find(1)]))
+                        ->assertStatus(200);
+    }
 }
