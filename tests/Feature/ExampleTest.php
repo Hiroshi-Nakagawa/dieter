@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Article;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -75,5 +76,14 @@ class ExampleTest extends TestCase
                     ->get(route('articles.create'));
         
         $response->assertStatus(200);
+    }
+
+    // 記事更新画面
+    public function testArticleEditView()
+    {
+        $response = $this
+                    ->actingAs(User::find(1))
+                    ->get(route('articles.edit', ['article' => Article::find(1)]))
+                    ->assertStatus(200);
     }
 }
