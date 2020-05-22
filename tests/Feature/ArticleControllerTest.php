@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\User;
+use App\Article;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -49,12 +50,15 @@ class ArticleControllerTest extends TestCase
                 ->assertViewIs('articles.create');
     }
 
-    // // 記事更新画面
+    // 記事更新画面
     // public function testArticleEditView()
     // {
+    //     $article = factory(Article::class)->create();
+    //     $user = factory(User::class)->create();
+        
     //     $response = $this
-    //                 ->actingAs(User::find(1))
-    //                 ->get(route('articles.edit', ['article' => Article::find(1)]))
+    //                 ->actingAs($user)
+    //                 ->get(route('articles.edit', ['article' => $article]))
     //                 ->assertStatus(200);
     // }
 
