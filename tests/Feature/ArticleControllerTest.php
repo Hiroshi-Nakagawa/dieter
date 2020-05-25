@@ -55,6 +55,8 @@ class ArticleControllerTest extends TestCase
     // {
     //     $article = factory(Article::class)->create();
     //     $user = factory(User::class)->create();
+    //     $article->user()->associate($user);
+    //     $article->save();
         
     //     $response = $this
     //                 ->actingAs($user)

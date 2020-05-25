@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Article;
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -18,6 +19,29 @@ class ArticleTest extends TestCase
 
         $result = $article->isLikedBy(null);
 
+        $this->assertFalse($result);
+    }
+
+    // ユーザーがいいねしているとき
+    public function testIsLikedByTheUser()
+    {
+        $article = factory(Article::class)->create();
+        $user = factory(User::class)->create();
+        $article->likes()->attach($user);
+
+        $result = $article->isLikedBy($user);
+        $this->assertTrue($result);
+    }
+
+    // 別のユーザーがいいねしているとき
+    public function testIsLikedByAnother()
+    {
+        $article = factory(Article::class)->create();
+        $user = factory(User::class)->create();
+        $another = factory(User::class)->create();
+        $article->likes()->attach($another);
+
+        $result = $article->isLikedBy($user);
         $this->assertFalse($result);
     }
 }
