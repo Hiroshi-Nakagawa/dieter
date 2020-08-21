@@ -55,4 +55,16 @@ class User extends Authenticatable
             ? (bool)$this->followers->where('id', $user->id)->count()
             : false;
     }
+
+    // フォロワーの数
+    public function getCountFollowersAttribute(): int
+    {
+        return $this->followers()->count();
+    }
+
+    // フォローの数
+    public function getCountFollowingsAttribute(): int
+    {
+        return $this->followings()->count();
+    }
 }
